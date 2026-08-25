@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO & Social Meta Tags -->
+  <title>NIRVAN '26 | Annual College Technical Fest | GEHU Campus</title>
+  <meta name="description" content="NIRVAN '26 — Where Ideas Become Innovations. The flagship Annual College Technical Fest at Graphic Era Hill University (GEHU Campus). 48-Hour Hackathon, ₹5 Lakh+ Prize Pool, Tech Competitions.">
+  <meta name="keywords" content="NIRVAN 26, GEHU, Graphic Era Hill University, College Fest, Technical Fest, Hackathon, Developers, Designers, Technology, Innovation, Dehradun">
+  <meta name="theme-color" content="#05070f">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="NIRVAN '26 — Where Ideas Become Innovations">
+  <meta property="og:description" content="Annual College Technical Fest at Graphic Era Hill University (GEHU Campus). Join 3,000+ developers, designers, and innovators.">
+  <meta property="og:type" content="website">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Orbitron:wght@600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- External Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- Interactive Custom Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+
+  <!-- Background WebGL 3D Canvas & Ambient FX -->
+  <div id="webgl-container"></div>
+  <div class="cyber-grid-overlay"></div>
+  <div class="scanline"></div>
+  <div class="ambient-nebula">
+    <div class="nebula-blob nebula-1"></div>
+    <div class="nebula-blob nebula-2"></div>
+    <div class="nebula-blob nebula-3"></div>
+  </div>
+
+  <!-- Main Application Content -->
+  <div class="app-wrapper">
+    
+    <!-- ==========================================
+         HUD Navbar
+         ========================================== -->
+    <header class="navbar">
+      <div class="container nav-container">
+        <a href="#" class="brand-group">
+          <div class="brand-symbol">
+            <i data-lucide="cpu"></i>
+          </div>
+          <div class="brand-text">
+            <div class="brand-title">NIRVAN <span class="accent-year">'26</span></div>
+            <div class="brand-badge">
+              <span class="campus-pill">GEHU CAMPUS</span>
+              <span>TECH FEST</span>
+            </div>
+          </div>
+        </a>
+
+        <nav>
+          <ul class="nav-links">
+            <li class="nav-item"><a href="#about">About</a></li>
+            <li class="nav-item"><a href="#tracks">Tracks</a></li>
+            <li class="nav-item"><a href="#highlights">Highlights</a></li>
+            <li class="nav-item"><a href="#campus-video">Campus Spotlight</a></li>
+            <li class="nav-item"><a href="#terminal">Terminal</a></li>
+          </ul>
+        </nav>
+
+        <div class="nav-actions">
+          <!-- Audio SFX Switcher -->
+          <button id="audio-toggle-btn" class="audio-toggle-btn" title="Toggle Futuristic Audio Feedback">
+            <span class="sound-bars">
+              <span class="sound-bar"></span>
+              <span class="sound-bar"></span>
+              <span class="sound-bar"></span>
+            </span>
+            <span id="audio-status-text">SFX OFF</span>
+          </button>
+
+          <!-- Register Pass Button -->
+          <button class="nav-cta-btn open-register-btn">
+            <i data-lucide="ticket"></i>
+            <span>GET PASS</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ==========================================
+         Hero Section
+         ========================================== -->
+    <main>
+      <section id="about" class="hero-section">
+        <div class="container">
+          <div class="hero-grid">
+            
+            <!-- Hero Left: Info & Countdown -->
+            <div class="hero-content">
+              
+              <div class="hero-pill-badge">
+                <span class="pulse-dot"></span>
+                <span class="pill-text">Annual College Technical Fest • GEHU Campus</span>
+              </div>
+
+              <div class="hero-title-wrap">
+                <h1 class="hero-glitch-title">
+                  <span class="scramble-title">NIRVAN '26</span>
+                </h1>
+              </div>
+
+              <div class="tagline-container">
+                <span class="tagline-prefix">⚡</span>
+                <h2 class="hero-tagline scramble-tagline">WHERE IDEAS BECOME INNOVATIONS</h2>
+              </div>
+
+              <p class="hero-description">
+                The premier annual innovation summit at <strong>Graphic Era Hill University</strong>. 
+                Bringing together visionary student developers, designers, and tech creators to build, compete, and shape tomorrow.
+              </p>
+
+              <!-- Target Audience Chips -->
+              <div class="hero-audience-chips">
+                <div class="audience-chip">
+                  <i data-lucide="code-2"></i>
+                  <span>Developers</span>
+                </div>
+                <div class="audience-chip">
+                  <i data-lucide="palette"></i>
+                  <span>Designers</span>
+                </div>
+                <div class="audience-chip">
+                  <i data-lucide="lightbulb"></i>
+                  <span>Innovators</span>
+                </div>
+                <div class="audience-chip">
+                  <i data-lucide="graduation-cap"></i>
+                  <span>Students</span>
+                </div>
+              </div>
+
+              <!-- Action CTAs -->
+              <div class="hero-cta-group">
+                <button class="btn-primary open-register-btn">
+                  <span>REGISTER NOW</span>
+                  <i data-lucide="arrow-right"></i>
+                </button>
+
+                <button class="btn-secondary btn-video-teaser open-video-btn">
+                  <span class="video-play-pulse"></span>
+                  <span>WATCH TEASER</span>
+                </button>
+              </div>
+
+              <!-- Live Countdown Module -->
+              <div class="countdown-wrapper">
+                <div class="countdown-header">
+                  <div class="countdown-label">
+                    <i data-lucide="clock" style="width: 16px; height: 16px;"></i>
+                    <span>COUNTDOWN TO NIRVAN '26</span>
+                  </div>
+                  <div class="countdown-status-live">
+                    <span>REGISTRATIONS LIVE</span>
+                  </div>
+                </div>
+
+                <div class="countdown-grid">
+                  <div class="countdown-box">
+                    <div class="countdown-num-wrap">
+                      <div id="cd-days" class="countdown-value">60</div>
+                    </div>
+                    <div class="countdown-unit">DAYS</div>
+                  </div>
+                  <div class="countdown-box">
+                    <div class="countdown-num-wrap">
+                      <div id="cd-hours" class="countdown-value">00</div>
+                    </div>
+                    <div class="countdown-unit">HOURS</div>
+                  </div>
+                  <div class="countdown-box">
+                    <div class="countdown-num-wrap">
+                      <div id="cd-minutes" class="countdown-value">00</div>
+                    </div>
+                    <div class="countdown-unit">MINUTES</div>
+                  </div>
+                  <div class="countdown-box">
+                    <div class="countdown-num-wrap">
+                      <div id="cd-seconds" class="countdown-value">00</div>
+                    </div>
+                    <div class="countdown-unit">SECONDS</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Hero Right: 3D HUD & Hologram Core -->
+            <div class="hero-visual-card">
+              <div class="holo-hud-panel">
+                <div class="corner-bracket corner-tl"></div>
+                <div class="corner-bracket corner-tr"></div>
+                <div class="corner-bracket corner-bl"></div>
+                <div class="corner-bracket corner-br"></div>
+
+                <div class="hud-header">
+                  <div class="hud-title">
+                    <i data-lucide="sparkles" style="width: 16px; height: 16px; color: var(--cyan-core);"></i>
+                    <span>QUANTUM CORE ENGINE</span>
+                  </div>
+                  <div class="hud-id">SYS: ONLINE // 60 FPS</div>
+                </div>
+
+                <div class="holo-3d-preview">
+                  <div class="holo-ring-animated ring-outer"></div>
+                  <div class="holo-ring-animated ring-mid"></div>
+                  <div class="holo-ring-animated ring-inner"></div>
+                  <div class="core-hologram-symbol">
+                    <i data-lucide="zap"></i>
+                  </div>
+                </div>
+
+                <div class="hud-metrics-row">
+                  <div class="hud-metric-item">
+                    <div class="metric-label">Total Prize Pool</div>
+                    <div class="metric-val glow-amber">₹5,00,000+</div>
+                  </div>
+                  <div class="hud-metric-item">
+                    <div class="metric-label">Hackathon Duration</div>
+                    <div class="metric-val glow-cyan">48 Hours</div>
+                  </div>
+                  <div class="hud-metric-item">
+                    <div class="metric-label">Expected Innovators</div>
+                    <div class="metric-val">3,000+</div>
+                  </div>
+                  <div class="hud-metric-item">
+                    <div class="metric-label">Campus Venue</div>
+                    <div class="metric-val">GEHU CAMPUS</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Campus Spotlight Trigger Card -->
+              <div class="campus-spotlight-card open-video-btn">
+                <div class="campus-info-left">
+                  <div class="campus-icon-wrap">
+                    <i data-lucide="map-pin"></i>
+                  </div>
+                  <div>
+                    <div class="campus-name">Graphic Era Hill University</div>
+                    <div class="campus-sub">Dehradun Campus • Innovation Center</div>
+                  </div>
+                </div>
+                <div class="campus-action-badge">
+                  <i data-lucide="play" style="width: 12px; height: 12px;"></i>
+                  <span>Watch Video</span>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           Key Highlights Marquee Section
+           ========================================== -->
+      <section id="highlights" class="metrics-marquee-section">
+        <div class="container">
+          <div class="marquee-grid">
+            
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i data-lucide="trophy"></i>
+              </div>
+              <div>
+                <div class="stat-value">₹5 Lakh+</div>
+                <div class="stat-label">Prizes &amp; Grants</div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i data-lucide="timer"></i>
+              </div>
+              <div>
+                <div class="stat-value">48 Hours</div>
+                <div class="stat-label">Intense Hackathon</div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i data-lucide="users"></i>
+              </div>
+              <div>
+                <div class="stat-value">3,000+</div>
+                <div class="stat-label">Developers &amp; Designers</div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i data-lucide="flame"></i>
+              </div>
+              <div>
+                <div class="stat-value">25+ Events</div>
+                <div class="stat-label">Tech &amp; Coding Tracks</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           Tracks & Innovation Pillars
+           ========================================== -->
+      <section id="tracks" class="tracks-section">
+        <div class="container">
+          
+          <div class="section-header">
+            <span class="section-tag">COMPETITION TRACKS</span>
+            <h2 class="section-title">Where Ideas Become Innovations</h2>
+            <p class="section-subtitle">Choose your battleground and build cutting-edge solutions across 6 future-ready domains.</p>
+          </div>
+
+          <div class="tracks-grid">
+            
+            <!-- Track 1 -->
+            <div class="track-card">
+              <div class="track-icon-badge">
+                <i data-lucide="brain-circuit"></i>
+              </div>
+              <h3 class="track-title">AI &amp; Autonomous Agents</h3>
+              <p class="track-desc">
+                Pioneer LLM workflows, generative models, autonomous agent networks, and predictive computer vision systems.
+              </p>
+              <div class="track-tags">
+                <span class="track-tag-pill">LLMs</span>
+                <span class="track-tag-pill">Deep Learning</span>
+                <span class="track-tag-pill">Agents</span>
+              </div>
+            </div>
+
+            <!-- Track 2 -->
+            <div class="track-card">
+              <div class="track-icon-badge">
+                <i data-lucide="shield-check"></i>
+              </div>
+              <h3 class="track-title">Cyber Security &amp; CTF</h3>
+              <p class="track-desc">
+                High-stakes offensive &amp; defensive cryptography, vulnerability assessment, ethical hacking, and network forensics.
+              </p>
+              <div class="track-tags">
+                <span class="track-tag-pill">CTF</span>
+                <span class="track-tag-pill">Zero-Trust</span>
+                <span class="track-tag-pill">Cryptanalysis</span>
+              </div>
+            </div>
+
+            <!-- Track 3 -->
+            <div class="track-card">
+              <div class="track-icon-badge">
+                <i data-lucide="blocks"></i>
+              </div>
+              <h3 class="track-title">Web 3.0 &amp; Decentralized</h3>
+              <p class="track-desc">
+                Architect scalable dApps, zero-knowledge verification, tokenomics, and next-gen blockchain infrastructure.
+              </p>
+              <div class="track-tags">
+                <span class="track-tag-pill">Smart Contracts</span>
+                <span class="track-tag-pill">ZK-Proofs</span>
+                <span class="track-tag-pill">DeFi</span>
+              </div>
+            </div>
+
+            <!-- Track 4 -->
+            <div class="track-card">
+              <div class="track-icon-badge">
+                <i data-lucide="layout"></i>
+              </div>
+              <h3 class="track-title">UI/UX &amp; Creative Tech</h3>
+              <p class="track-desc">
+                Craft immersive spatial interfaces, dynamic 3D web experiences, fluid micro-interactions, and design systems.
+              </p>
+              <div class="track-tags">
+                <span class="track-tag-pill">Spatial UI</span>
+                <span class="track-tag-pill">Design Systems</span>
+                <span class="track-tag-pill">WebGL</span>
+              </div>
+            </div>
+
+            <!-- Track 5 -->
+            <div class="track-card">
+              <div class="track-icon-badge">
+                <i data-lucide="bot"></i>
+              </div>
+              <h3 class="track-title">Robotics &amp; Edge IoT</h3>
+              <p class="track-desc">
+                Integrate intelligent microcontrollers, autonomous drones, smart edge sensor arrays, and embedded hardware.
+              </p>
+              <div class="track-tags">
+                <span class="track-tag-pill">Edge AI</span>
+                <span class="track-tag-pill">Drones</span>
+                <span class="track-tag-pill">Embedded</span>
+              </div>
+            </div>
+
+            <!-- Track 6 -->
+            <div class="track-card">
+              <div class="track-icon-badge">
+                <i data-lucide="rocket"></i>
+              </div>
+              <h3 class="track-title">Open Moonshot Innovation</h3>
+              <p class="track-desc">
+                Unconstrained wildcard track for revolutionary student concepts in fintech, climate tech, health, and social impact.
+              </p>
+              <div class="track-tags">
+                <span class="track-tag-pill">Moonshot</span>
+                <span class="track-tag-pill">Social Impact</span>
+                <span class="track-tag-pill">Wildcard</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ==========================================
+           Campus Spotlight & Fest Teaser Video
+           ========================================== -->
+      <section id="campus-video" class="campus-video-section">
+        <div class="container">
+          <div class="video-banner-box">
+            
+            <div class="video-info-side">
+              <span class="section-tag">GEHU CAMPUS SPOTLIGHT</span>
+              <h3>Experience The Energy of NIRVAN '26</h3>
+              <p>
+                Watch the official campus showcase from Graphic Era Hill University. Get ready for an electrifying weekend of hackathons, workshops, keynote panels, esports, and tech innovation.
+              </p>
+              <button class="btn-primary open-video-btn">
+                <i data-lucide="play"></i>
+                <span>LAUNCH CINEMA PREVIEW</span>
+              </button>
+            </div>
+
+            <div class="video-player-preview">
+              <video muted loop playsinline preload="metadata">
+                <source src="bhai_mujhe_yehh_graphic_era_hi_gwr_video_mvp.mp4" type="video/mp4">
+              </video>
+              <div class="video-overlay-play">
+                <div class="big-play-btn">
+                  <i data-lucide="play" style="width: 28px; height: 28px; fill: currentColor;"></i>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           Interactive Cyber Terminal
+           ========================================== -->
+      <section id="terminal" class="terminal-section">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">DEVELOPER CONSOLE</span>
+            <h2 class="section-title">Interactive Fest Terminal</h2>
+            <p class="section-subtitle">Execute commands to explore fest tracks, campus lore, and secret easter eggs.</p>
+          </div>
+
+          <div class="terminal-window">
+            <div class="terminal-topbar">
+              <div class="terminal-dots">
+                <div class="dot dot-red"></div>
+                <div class="dot dot-yellow"></div>
+                <div class="dot dot-green"></div>
+              </div>
+              <div class="terminal-title">nirvan-cli — v2.6.0 — gehu-core</div>
+              <div style="width: 48px;"></div>
+            </div>
+            
+            <div id="terminal-output" class="terminal-body">
+              <div class="terminal-line cyan">[SYSTEM INITIALIZED] NIRVAN '26 FEST ENVIRONMENT READY.</div>
+              <div class="terminal-line muted">Type '<span class="cyan">help</span>' to inspect available system commands or '<span class="cyan">register</span>' to get your ticket pass.</div>
+            </div>
+
+            <div class="terminal-input-row" style="padding: 0 24px 20px 24px;">
+              <span class="terminal-prompt">user@nirvan-26:~$</span>
+              <input type="text" id="terminal-command-input" class="terminal-input" placeholder="Type a command (e.g. help, tracks, gehu, prizes)..." autocomplete="off">
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ==========================================
+         Footer
+         ========================================== -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          
+          <div class="footer-brand">
+            <h4>NIRVAN '26</h4>
+            <p>Annual College Technical Fest • Graphic Era Hill University (GEHU Campus)</p>
+            <p style="font-size: 0.75rem; color: var(--cyan-core); margin-top: 6px;">Theme: Innovations • Technology • Competition • Community</p>
+          </div>
+
+          <ul class="footer-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#tracks">Tracks</a></li>
+            <li><a href="#highlights">Highlights</a></li>
+            <li><a href="#campus-video">Campus Video</a></li>
+            <li><a href="#terminal">Terminal</a></li>
+          </ul>
+
+        </div>
+
+        <div class="footer-bottom">
+          <p>© 2026 NIRVAN Technical Fest • Graphic Era Hill University (GEHU). Where Ideas Become Innovations.</p>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ==========================================
+       Modal 1: Campus Video Showcase Cinema
+       ========================================== -->
+  <div id="video-modal" class="modal-backdrop">
+    <div class="modal-dialog video-modal-dialog">
+      <button id="video-modal-close" class="modal-close-btn" aria-label="Close Video Modal">
+        <i data-lucide="x"></i>
+      </button>
+
+      <div style="margin-bottom: 16px;">
+        <h3 style="font-family: var(--font-display); font-size: 1.4rem; color: #fff;">
+          NIRVAN '26 — Graphic Era Hill University Showcase
+        </h3>
+        <p style="font-size: 0.85rem; color: var(--text-secondary);">
+          Official Campus Video • GEHU Innovation Hub
+        </p>
+      </div>
+
+      <div class="video-container-modal">
+        <video id="campus-fest-video" controls playsinline>
+          <source src="bhai_mujhe_yehh_graphic_era_hi_gwr_video_mvp.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       Modal 2: Hacker Pass & Registration Generator
+       ========================================== -->
+  <div id="register-modal" class="modal-backdrop">
+    <div class="modal-dialog">
+      <button id="register-modal-close" class="modal-close-btn" aria-label="Close Register Modal">
+        <i data-lucide="x"></i>
+      </button>
+
+      <div style="margin-bottom: 24px; text-align: center;">
+        <h3 style="font-family: var(--font-display); font-size: 1.6rem; color: #fff;">
+          NIRVAN '26 HACKER PASS
+        </h3>
+        <p style="font-size: 0.88rem; color: var(--text-secondary); margin-top: 4px;">
+          Generate your official digital attendee holographic pass for GEHU Campus.
+        </p>
+      </div>
+
+      <!-- Form -->
+      <form id="hacker-pass-form">
+        <div class="form-group">
+          <label class="form-label" for="reg-name">Full Name</label>
+          <input type="text" id="reg-name" class="form-input" placeholder="e.g. Alex Sharma" required>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label" for="reg-email">Email Address</label>
+            <input type="email" id="reg-email" class="form-input" placeholder="alex@domain.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="reg-college">College / Institution</label>
+            <input type="text" id="reg-college" class="form-input" placeholder="e.g. GEHU Campus, Dehradun" required>
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label" for="reg-track">Preferred Track</label>
+            <select id="reg-track" class="form-select">
+              <option value="AI & Autonomous Agents">AI &amp; Autonomous Agents</option>
+              <option value="Cyber Security & CTF">Cyber Security &amp; CTF</option>
+              <option value="Web 3.0 & Decentralized">Web 3.0 &amp; Decentralized</option>
+              <option value="UI/UX & Creative Tech">UI/UX &amp; Creative Tech</option>
+              <option value="Robotics & Edge IoT">Robotics &amp; Edge IoT</option>
+              <option value="Open Moonshot">Open Moonshot</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="reg-role">Role</label>
+            <select id="reg-role" class="form-select">
+              <option value="Developer">Developer</option>
+              <option value="UI/UX Designer">UI/UX Designer</option>
+              <option value="Innovator / Founder">Innovator / Founder</option>
+              <option value="Student Attendee">Student Attendee</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 10px;">
+          <span>GENERATE HOLOGRAPHIC PASS</span>
+          <i data-lucide="sparkles"></i>
+        </button>
+      </form>
+
+      <!-- Generated Pass Preview -->
+      <div id="generated-pass-container" class="generated-pass-container">
+        
+        <div class="holo-ticket-card">
+          <div class="ticket-header">
+            <div>
+              <div class="ticket-event-name">NIRVAN '26</div>
+              <div style="font-size: 0.72rem; color: var(--text-cyan); font-family: var(--font-mono);">
+                GEHU CAMPUS • DEHRADUN
+              </div>
+            </div>
+            <div id="pass-user-role" class="ticket-badge-tag">DEVELOPER</div>
+          </div>
+
+          <div class="ticket-body-grid">
+            <div>
+              <div id="pass-user-name" class="ticket-user-name">Alex Sharma</div>
+              <div id="pass-user-college" class="ticket-user-meta">Graphic Era Hill University</div>
+              <div id="pass-user-track" class="ticket-user-meta" style="color: var(--cyan-core); margin-top: 4px;">
+                Track: AI &amp; Autonomous Agents
+              </div>
+              <div id="pass-serial-id" style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); margin-top: 8px;">
+                PASS ID: #NIRVAN26-8891-AI
+              </div>
+            </div>
+
+            <div class="ticket-qr-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+                <rect x="14" y="14" width="3" height="3"></rect>
+                <rect x="18" y="18" width="3" height="3"></rect>
+                <rect x="14" y="18" width="3" height="3"></rect>
+                <rect x="18" y="14" width="3" height="3"></rect>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 12px; justify-content: center; margin-top: 18px;">
+          <button id="download-pass-btn" class="btn-primary">
+            <i data-lucide="download"></i>
+            <span>PRINT / SAVE PASS</span>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Lucide Icon Initialization -->
+  <script>
+    lucide.createIcons();
+  </script>
+
+  <!-- Application Logic Scripts -->
+  <script src="audio.js"></script>
+  <script src="three-scene.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>
