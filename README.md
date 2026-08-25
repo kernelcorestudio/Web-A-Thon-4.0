@@ -6,13 +6,12 @@
 
 ---
 
-## 🎥 Campus Drone Video Showcase (GEHU)
+## 🎬 Live Platform Showcase & Campus Drone Preview
 
 <p align="center">
-  <video src="public/Drone.mp4" width="100%" max-width="850px" controls autoplay loop muted playsinline>
-    <a href="public/Drone.mp4">🎬 Watch Official GEHU Campus Drone Video</a>
-  </video>
+  <img src="public/ezgif-598a97629f404815.gif" alt="NIRVAN '26 Live Platform Showcase" width="100%" max-width="850px" style="border-radius: 16px; border: 1px solid rgba(0, 240, 255, 0.3); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 240, 255, 0.2);" />
 </p>
+
 
 ---
 
