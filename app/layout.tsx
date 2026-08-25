@@ -24,6 +24,14 @@ export const metadata: Metadata = {
       'Annual College Technical Fest at Graphic Era Hill University (GEHU Campus). Join 3,000+ developers, designers, and innovators.',
     type: 'website',
   },
+  icons: {
+    icon: [
+      { url: '/logo.png?v=2', type: 'image/png' },
+      { url: '/favicon.ico?v=2' },
+    ],
+    shortcut: '/logo.png?v=2',
+    apple: '/logo.png?v=2',
+  },
 };
 
 export const viewport: Viewport = {
@@ -40,6 +48,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="icon" type="image/png" href="/logo.png?v=2" />
+        <link rel="shortcut icon" href="/logo.png?v=2" />
+        <link rel="apple-touch-icon" href="/logo.png?v=2" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
