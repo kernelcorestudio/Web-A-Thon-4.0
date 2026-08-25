@@ -1,11 +1,11 @@
 # NIRVAN '26 — Feature Specification & Breakdown
 
-This document provides a comprehensive breakdown of all interactive features implemented across the NIRVAN '26 Hero Application.
+This document provides a comprehensive breakdown of all interactive features implemented across the NIRVAN '26 Next.js Application.
 
 ---
 
 ## 1. 3D WebGL Holographic Engine
-- **File**: [`three-scene.js`](file:///d:/Web-A-Thon-4.0/three-scene.js)
+- **File**: [`components/ThreeScene.tsx`](file:///d:/Web-A-Thon-4.0/components/ThreeScene.tsx)
 - **Features**:
   - **Quantum Core**: Centered 3D wireframe Icosahedron with glowing cyan nodes and an inner pulsating crystal Octahedron.
   - **Orbital Gimbal Rings**: Two multi-axis rotating rings with particle point emitters that spin in opposing directions.
@@ -15,18 +15,18 @@ This document provides a comprehensive breakdown of all interactive features imp
 
 ---
 
-## 2. Live Synchronized Countdown Timer
-- **Files**: [`index.html`](file:///d:/Web-A-Thon-4.0/index.html), [`app.js`](file:///d:/Web-A-Thon-4.0/app.js)
+## 2. Live Synchronized Countdown Timer & Scrambler
+- **File**: [`components/Hero.tsx`](file:///d:/Web-A-Thon-4.0/components/Hero.tsx)
 - **Features**:
   - Precision countdown to fest launch (October 24, 2026 at 09:00:00 AM IST).
   - Four independent cyber counters: **Days**, **Hours**, **Minutes**, and **Seconds**.
   - Dynamic zero-padding and micro-tick updates with hover glow states.
-  - Live status badge indicating active registrations.
+  - Text decoder scramble animation for event title ("NIRVAN '26") and tagline.
 
 ---
 
 ## 3. Procedural Audio Synthesizer (SFX)
-- **File**: [`audio.js`](file:///d:/Web-A-Thon-4.0/audio.js)
+- **File**: [`lib/audio.ts`](file:///d:/Web-A-Thon-4.0/lib/audio.ts)
 - **Features**:
   - 100% procedural audio generation using the browser's native **Web Audio API**.
   - Zero external audio files required — zero download latency.
@@ -39,17 +39,17 @@ This document provides a comprehensive breakdown of all interactive features imp
 
 ---
 
-## 4. Campus Video Teaser & Cinema Player
-- **Files**: [`index.html`](file:///d:/Web-A-Thon-4.0/index.html), [`app.js`](file:///d:/Web-A-Thon-4.0/app.js), [`bhai_mujhe_yehh_graphic_era_hi_gwr_video_mvp.mp4`](file:///d:/Web-A-Thon-4.0/bhai_mujhe_yehh_graphic_era_hi_gwr_video_mvp.mp4)
+## 4. Campus Drone Showcase & Cinema Player
+- **Files**: [`components/CampusSpotlight.tsx`](file:///d:/Web-A-Thon-4.0/components/CampusSpotlight.tsx), [`components/VideoModal.tsx`](file:///d:/Web-A-Thon-4.0/components/VideoModal.tsx), [`public/Drone.mp4`](file:///d:/Web-A-Thon-4.0/public/Drone.mp4)
 - **Features**:
-  - Embedded campus highlight video showcasing Graphic Era Hill University (GEHU).
+  - High-definition campus aerial video (`Drone.mp4`) showcasing Graphic Era Hill University (GEHU).
   - Preview card with looping ambient video and glowing play button.
   - Cyber Cinema modal with full playback controls, escape key handler, and auto-pause on close.
 
 ---
 
 ## 5. Interactive Developer CLI Terminal
-- **Files**: [`index.html`](file:///d:/Web-A-Thon-4.0/index.html), [`app.js`](file:///d:/Web-A-Thon-4.0/app.js)
+- **File**: [`components/Terminal.tsx`](file:///d:/Web-A-Thon-4.0/components/Terminal.tsx)
 - **Features**:
   - Authentic Linux/macOS styled terminal window with window controls.
   - Built-in command interpreter supporting:
@@ -67,7 +67,7 @@ This document provides a comprehensive breakdown of all interactive features imp
 ---
 
 ## 6. Holographic Hacker Pass Generator & Confetti
-- **Files**: [`index.html`](file:///d:/Web-A-Thon-4.0/index.html), [`app.js`](file:///d:/Web-A-Thon-4.0/app.js)
+- **File**: [`components/RegisterModal.tsx`](file:///d:/Web-A-Thon-4.0/components/RegisterModal.tsx)
 - **Features**:
   - Dynamic registration modal form with name, email, college, track, and role inputs.
   - Instant ticket generation creating a futuristic holographic badge.
@@ -79,9 +79,11 @@ This document provides a comprehensive breakdown of all interactive features imp
 ---
 
 ## 7. 6 Future-Ready Competition Tracks
-1. **AI & Autonomous Agents**: LLM workflows, generative models, autonomous agent networks.
-2. **Cyber Security & CTF**: Offensive/defensive hacking, zero-trust architectures, cryptography.
-3. **Web 3.0 & Decentralized**: Scalable dApps, smart contracts, ZK-proofs, DeFi.
-4. **UI/UX & Creative Tech**: Spatial interfaces, 3D WebGL experiences, design systems.
-5. **Robotics & Edge IoT**: Smart hardware, autonomous drones, edge AI sensor systems.
-6. **Open Moonshot Innovation**: Wildcard moonshots across fintech, sustainability, and health.
+- **File**: [`components/Tracks.tsx`](file:///d:/Web-A-Thon-4.0/components/Tracks.tsx)
+- **Tracks**:
+  1. **AI & Autonomous Agents**: LLM workflows, generative models, autonomous agent networks.
+  2. **Cyber Security & CTF**: Offensive/defensive hacking, zero-trust architectures, cryptography.
+  3. **Web 3.0 & Decentralized**: Scalable dApps, smart contracts, ZK-proofs, DeFi.
+  4. **UI/UX & Creative Tech**: Spatial interfaces, 3D WebGL experiences, design systems.
+  5. **Robotics & Edge IoT**: Smart hardware, autonomous drones, edge AI sensor systems.
+  6. **Open Moonshot Innovation**: Wildcard moonshots across fintech, sustainability, and health.
