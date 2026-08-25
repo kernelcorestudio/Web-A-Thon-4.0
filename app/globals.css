@@ -42,7 +42,7 @@
   --border-active: #00f0ff;
 
   /* Typography */
-  --font-display: 'Orbitron', 'Space Grotesk', -apple-system, sans-serif;
+  --font-display: 'Inter', 'Space Grotesk', -apple-system, sans-serif;
   --font-body: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
@@ -2089,4 +2089,350 @@ body {
   z-index: 3;
 }
 
+/* ==========================================================================
+   Premium Registration Modal Overrides
+   ========================================================================== */
 
+/* Utility classes added */
+.mt-4 { margin-top: 1rem; }
+.w-full { width: 100%; }
+.ml-2 { margin-left: 0.5rem; }
+.mr-2 { margin-right: 0.5rem; }
+.justify-center { justify-content: center; }
+
+/* Enhanced Modal Dialog */
+.premium-modal {
+  background: rgba(10, 16, 32, 0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(0, 240, 255, 0.4);
+  box-shadow: inset 0 0 40px rgba(139, 92, 246, 0.1), 0 30px 80px rgba(0, 0, 0, 0.9), 0 0 60px rgba(0, 240, 255, 0.15);
+  border-radius: 24px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.premium-modal::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cyan-core), transparent);
+  opacity: 0.7;
+}
+
+.modal-header {
+  margin-bottom: 32px;
+  text-align: center;
+  position: relative;
+}
+
+.modal-title {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+  letter-spacing: 1px;
+}
+
+.modal-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-top: 8px;
+}
+
+/* Premium Inputs */
+.premium-input-group {
+  margin-bottom: 20px;
+}
+
+.input-icon-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 14px;
+  color: var(--text-muted);
+  width: 18px;
+  height: 18px;
+  transition: color 0.3s ease;
+  pointer-events: none;
+}
+
+.form-input.with-icon,
+.form-select.with-icon {
+  padding-left: 42px;
+  background: rgba(5, 7, 15, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: var(--text-pure);
+  transition: all 0.3s var(--ease-smooth);
+}
+
+.form-input.with-icon:focus,
+.form-select.with-icon:focus {
+  background: rgba(5, 7, 15, 0.9);
+  border-color: var(--cyan-core);
+  box-shadow: 0 0 0 3px rgba(0, 240, 255, 0.15), inset 0 0 20px rgba(0, 240, 255, 0.05);
+  outline: none;
+}
+
+.input-icon-wrapper:focus-within .input-icon {
+  color: var(--cyan-core);
+}
+
+/* Shimmer Button */
+.shimmer-btn {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--cyan-core), var(--purple-core));
+  border: none;
+  border-radius: 12px;
+  padding: 14px 24px;
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 1px;
+  box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+  transition: all 0.3s ease;
+}
+
+.shimmer-btn::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 50%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transform: skewX(-25deg);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  100% { left: 200%; }
+}
+
+.shimmer-text {
+  position: relative;
+  z-index: 2;
+}
+
+/* Enhanced Holographic Ticket */
+.premium-holo-card {
+  background: linear-gradient(135deg, rgba(20, 32, 58, 0.8), rgba(10, 16, 32, 0.9));
+  border: 1px solid rgba(0, 240, 255, 0.4);
+  box-shadow: inset 0 0 30px rgba(139, 92, 246, 0.2), 0 20px 50px rgba(0, 0, 0, 0.5);
+  border-radius: 16px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.premium-holo-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPjxyZWN0IHdpZHRoPSI0IiBoZWlnaHQ9IjQiIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==');
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.premium-holo-card::after {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  background: conic-gradient(from 0deg, transparent 0 340deg, rgba(0, 240, 255, 0.3) 360deg);
+  animation: rotate 10s linear infinite;
+  pointer-events: none;
+  opacity: 0.15;
+}
+
+@keyframes rotate {
+  100% { transform: rotate(360deg); }
+}
+
+.premium-badge {
+  background: linear-gradient(90deg, var(--cyan-core), var(--purple-core));
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+  font-weight: bold;
+}
+
+.ticket-location {
+  font-size: 0.75rem;
+  color: var(--text-cyan);
+  font-family: var(--font-mono);
+  margin-top: 4px;
+  letter-spacing: 0.5px;
+}
+
+.ticket-user-track {
+  color: var(--cyan-core);
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+.ticket-serial-id {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 12px;
+  border-top: 1px dashed rgba(255,255,255,0.1);
+  padding-top: 12px;
+}
+
+.premium-qr {
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  padding: 10px;
+  background: rgba(0,0,0,0.4);
+  border-radius: 8px;
+  color: var(--cyan-core);
+}
+
+.download-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 24px;
+  position: relative;
+  z-index: 10;
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ==========================================================================
+   Team Registration Toggle & Layout
+   ========================================================================== */
+
+.reg-type-toggle {
+  display: flex;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 12px;
+  padding: 4px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.toggle-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background: transparent;
+  color: var(--text-muted);
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.toggle-btn.active {
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(139, 92, 246, 0.2));
+  color: var(--cyan-core);
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.1);
+}
+
+.team-members-container {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.team-members-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.member-card {
+  background: rgba(5, 7, 15, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+}
+
+.member-card:hover {
+  border-color: rgba(0, 240, 255, 0.2);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.member-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.member-card-header h5 {
+  color: var(--cyan-core);
+  font-size: 0.9rem;
+  margin: 0;
+  font-family: var(--font-mono);
+}
+
+.btn-icon-danger {
+  background: transparent;
+  color: var(--text-muted);
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  padding: 4px;
+}
+
+.btn-icon-danger:hover {
+  color: var(--red-core);
+}
+
+/* ==========================================================================
+   Custom Select Dropdown
+   ========================================================================== */
+
+.custom-select-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 8px;
+  background: rgba(10, 16, 32, 0.98);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  border-radius: 12px;
+  padding: 8px;
+  z-index: 50;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.8), 0 0 20px rgba(0, 240, 255, 0.1);
+}
+
+.custom-select-option {
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+}
+
+.custom-select-option:hover {
+  background: rgba(0, 240, 255, 0.15);
+  color: var(--cyan-core);
+}
