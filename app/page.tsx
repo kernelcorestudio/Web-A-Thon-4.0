@@ -6,6 +6,7 @@ import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import Footer from '@/components/Footer';
 import RegisterModal from '@/components/RegisterModal';
+import StyleNovaHero from '@/components/StyleNovaHero';
 import CustomCursor from '@/components/CustomCursor';
 
 // Dynamic import of Three.js background to ensure client-only execution
@@ -40,16 +41,8 @@ export default function Home() {
             onOpenVideo={() => {}}
           />
 
-          {/* Events Section */}
-          <section id="events" className="placeholder-section">
-            <div className="container">
-              <div className="section-header">
-                <span className="section-tag">COMING SOON</span>
-                <h2 className="section-title">Events</h2>
-                <p className="section-subtitle">Stay tuned — event lineup dropping soon.</p>
-              </div>
-            </div>
-          </section>
+          {/* Events Section — Style.nova Interactive Hero & Spinning Card Carousel */}
+          <StyleNovaHero onOpenRegister={() => setIsRegisterModalOpen(true)} />
 
           {/* Gallery Section */}
           <section id="gallery" className="placeholder-section">
