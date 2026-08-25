@@ -6,8 +6,17 @@ import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import Footer from '@/components/Footer';
 import RegisterModal from '@/components/RegisterModal';
-import StyleNovaHero from '@/components/StyleNovaHero';
 import CustomCursor from '@/components/CustomCursor';
+import { EventsGallery } from '@/components/EventsGallery';
+import { Sponsors } from '@/components/Sponsors';
+import { ContactSection } from '@/components/ContactSection';
+import { AboutSection } from '@/components/AboutSection';
+import { EventArena } from '@/components/EventArena';
+import { Schedule } from '@/components/Schedule';
+import { Speakers } from '@/components/Speakers';
+import { AudioPlayer } from '@/components/AudioPlayer';
+import { VideoSeparator } from '@/components/VideoSeparator';
+import { ScrollReveal } from '@/components/ScrollReveal';
 
 // Dynamic import of Three.js background to ensure client-only execution
 const ThreeScene = dynamic(() => import('@/components/ThreeScene'), { ssr: false });
@@ -33,38 +42,56 @@ export default function Home() {
       {/* Main Content Layout */}
       <div className="app-wrapper">
         <Navbar onOpenRegister={() => setIsRegisterModalOpen(true)} />
-        
+
         <main>
           {/* Home Section */}
           <Hero
             onOpenRegister={() => setIsRegisterModalOpen(true)}
-            onOpenVideo={() => {}}
+            onOpenVideo={() => { }}
           />
 
-          {/* Events Section — Style.nova Interactive Hero & Spinning Card Carousel */}
-          <StyleNovaHero onOpenRegister={() => setIsRegisterModalOpen(true)} />
+          {/* About Section */}
+          <ScrollReveal direction="left" delay={150}>
+            <AboutSection />
+          </ScrollReveal>
+
+          {/* Black Hole Video Separator */}
+          <ScrollReveal direction="up" delay={200}>
+            <VideoSeparator />
+          </ScrollReveal>
+
+          {/* Event Arena */}
+          <ScrollReveal direction="right" delay={150}>
+            <EventArena onRegisterClick={() => setIsRegisterModalOpen(true)} />
+          </ScrollReveal>
+
+          {/* Schedule */}
+          <ScrollReveal direction="left" delay={150}>
+            <Schedule />
+          </ScrollReveal>
+
+          {/* Speakers */}
+          <ScrollReveal direction="right" delay={150}>
+            <Speakers />
+          </ScrollReveal>
 
           {/* Gallery Section */}
-          <section id="gallery" className="placeholder-section">
-            <div className="container">
-              <div className="section-header">
-                <span className="section-tag">COMING SOON</span>
-                <h2 className="section-title">Gallery</h2>
-                <p className="section-subtitle">Highlights and memories from past editions.</p>
-              </div>
-            </div>
-          </section>
+          <ScrollReveal direction="left" delay={150}>
+            <EventsGallery />
+          </ScrollReveal>
+
+          {/* Sponsors Section */}
+          <ScrollReveal direction="right" delay={150}>
+            <Sponsors />
+          </ScrollReveal>
 
           {/* Contact Section */}
-          <section id="contact" className="placeholder-section">
-            <div className="container">
-              <div className="section-header">
-                <span className="section-tag">GET IN TOUCH</span>
-                <h2 className="section-title">Contact Us</h2>
-                <p className="section-subtitle">Have questions? Reach out to the NIRVAN '26 team.</p>
-              </div>
-            </div>
-          </section>
+          <ScrollReveal direction="bottom" delay={150}>
+            <ContactSection />
+          </ScrollReveal>
+
+          {/* Background Audio Player */}
+          <AudioPlayer />
         </main>
 
         <Footer />

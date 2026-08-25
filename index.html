@@ -37,6 +37,11 @@
 
 <body>
 
+  <!-- Background Video -->
+  <video autoplay loop muted playsinline id="bg-video">
+    <source src="components/assests/hero.mp4" type="video/mp4">
+  </video>
+
   <!-- Background WebGL 3D Canvas & Ambient FX -->
   <div id="webgl-container"></div>
   <div class="cyber-grid-overlay"></div>
@@ -69,16 +74,6 @@
         </a>
 
         <div class="nav-actions">
-          <!-- Audio SFX Switcher -->
-          <button id="audio-toggle-btn" class="audio-toggle-btn" title="Toggle Futuristic Audio Feedback">
-            <span class="sound-bars">
-              <span class="sound-bar"></span>
-              <span class="sound-bar"></span>
-              <span class="sound-bar"></span>
-            </span>
-            <span id="audio-status-text">SFX OFF</span>
-          </button>
-
           <!-- Register Pass Button -->
           <button class="nav-cta-btn open-register-btn">
             <i data-lucide="ticket"></i>
@@ -92,110 +87,28 @@
          Hero Section
          ========================================== -->
     <main>
-      <section id="about" class="hero-section">
+      <section id="about" class="hero-section hero-section--centered">
+        <video autoplay loop muted playsinline class="hero-video-bg">
+          <source src="components/assests/hero.mp4" type="video/mp4">
+        </video>
         <div class="container">
-          <div class="hero-grid">
-
-            <!-- Hero Left: Info & Countdown -->
-            <div class="hero-content">
-
-              <div class="hero-pill-badge">
-                <span class="pulse-dot"></span>
-                <span class="pill-text">Annual College Technical Fest • GEHU Campus</span>
-              </div>
-
-              <div class="hero-title-wrap">
-                <h1 class="hero-glitch-title">
-                  <span class="scramble-title">NIRVAN '26</span>
-                </h1>
-              </div>
-
-              <div class="tagline-container">
-                <span class="tagline-prefix">⚡</span>
-                <h2 class="hero-tagline scramble-tagline">WHERE IDEAS BECOME INNOVATIONS</h2>
-              </div>
-
-              <p class="hero-description">
-                The premier annual innovation summit at <strong>Graphic Era Hill University</strong>.
-                Bringing together visionary student developers, designers, and tech creators to build, compete, and
-                shape tomorrow.
-              </p>
-
-              <!-- Target Audience Chips -->
-              <div class="hero-audience-chips">
-                <div class="audience-chip">
-                  <i data-lucide="code-2"></i>
-                  <span>Developers</span>
-                </div>
-                <div class="audience-chip">
-                  <i data-lucide="palette"></i>
-                  <span>Designers</span>
-                </div>
-                <div class="audience-chip">
-                  <i data-lucide="lightbulb"></i>
-                  <span>Innovators</span>
-                </div>
-                <div class="audience-chip">
-                  <i data-lucide="graduation-cap"></i>
-                  <span>Students</span>
-                </div>
-              </div>
-
-              <!-- Action CTAs -->
-              <div class="hero-cta-group">
-                <button class="btn-primary open-register-btn">
-                  <span>REGISTER NOW</span>
-                  <i data-lucide="arrow-right"></i>
-                </button>
-
-                <button class="btn-secondary btn-video-teaser open-video-btn">
-                  <span class="video-play-pulse"></span>
-                  <span>WATCH TEASER</span>
-                </button>
-              </div>
-
-              <!-- Live Countdown Module -->
-              <div class="countdown-wrapper">
-                <div class="countdown-header">
-                  <div class="countdown-label">
-                    <i data-lucide="clock" style="width: 16px; height: 16px;"></i>
-                    <span>COUNTDOWN TO NIRVAN '26</span>
-                  </div>
-                  <div class="countdown-status-live">
-                    <span>REGISTRATIONS LIVE</span>
-                  </div>
-                </div>
-
-                <div class="countdown-grid">
-                  <div class="countdown-box">
-                    <div class="countdown-num-wrap">
-                      <div id="cd-days" class="countdown-value">60</div>
-                    </div>
-                    <div class="countdown-unit">DAYS</div>
-                  </div>
-                  <div class="countdown-box">
-                    <div class="countdown-num-wrap">
-                      <div id="cd-hours" class="countdown-value">00</div>
-                    </div>
-                    <div class="countdown-unit">HOURS</div>
-                  </div>
-                  <div class="countdown-box">
-                    <div class="countdown-num-wrap">
-                      <div id="cd-minutes" class="countdown-value">00</div>
-                    </div>
-                    <div class="countdown-unit">MINUTES</div>
-                  </div>
-                  <div class="countdown-box">
-                    <div class="countdown-num-wrap">
-                      <div id="cd-seconds" class="countdown-value">00</div>
-                    </div>
-                    <div class="countdown-unit">SECONDS</div>
-                  </div>
-                </div>
-              </div>
-
+          <div class="hero-center-content">
+            <div class="hero-title-sponsor-label">TITLE SPONSOR</div>
+            <div class="hero-title-wrap">
+              <h1 class="hero-glitch-title">
+                <span class="scramble-title">NIRVAN '26</span>
+              </h1>
             </div>
 
+            <div class="tagline-container">
+              <h2 class="hero-tagline scramble-tagline">WHERE IDEAS BECOME INNOVATIONS</h2>
+            </div>
+
+            <div class="hero-date-venue">
+              <span class="hero-date"><i data-lucide="calendar"></i> Nov 12 - 14, 2026</span>
+              <span class="hero-divider">•</span>
+              <span class="hero-venue"><i data-lucide="map-pin"></i> GEHU Campus</span>
+            </div>
           </div>
         </div>
       </section>

@@ -17,15 +17,18 @@ interface ContinuousTabsProps {
 
 /* ---------- Defaults ---------- */
 const DEFAULT_TABS: TabItem[] = [
-    { id: "home", label: "Home" },
+    { id: "about", label: "Home" },
+    { id: "about-fest", label: "About" },
     { id: "events", label: "Events" },
+    { id: "schedule", label: "Schedule" },
     { id: "gallery", label: "Gallery" },
-    { id: "contact", label: "Contact Us" },
+    { id: "sponsors", label: "Sponsors" },
+    { id: "contact", label: "Contact" },
 ];
 
 export const ContinuousTabs: FC<ContinuousTabsProps> = ({
     tabs = DEFAULT_TABS,
-    defaultActiveId = "home",
+    defaultActiveId = "about",
     onChange,
 }) => {
     const [active, setActive] = useState<string>(defaultActiveId);

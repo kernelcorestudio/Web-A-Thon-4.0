@@ -6,8 +6,8 @@
 
 :root {
   /* Color Palette */
-  --bg-primary: #05070f;
-  --bg-secondary: #090e1c;
+  --bg-primary: #000000;
+  --bg-secondary: #000000;
   --bg-card: rgba(13, 21, 38, 0.65);
   --bg-card-hover: rgba(20, 32, 58, 0.85);
   --bg-glass: rgba(10, 16, 32, 0.45);
@@ -70,7 +70,7 @@ html {
 body {
   min-height: 100vh;
   position: relative;
-  background: radial-gradient(circle at 50% 20%, #0d1730 0%, #060914 60%, #03050a 100%);
+  background: #000000;
   overflow-x: hidden;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -103,6 +103,18 @@ body {
    Background FX Layers & Canvas
    ========================================================================== */
 
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.8; /* Slightly dim the video so text is readable */
+}
+
 #webgl-container {
   position: fixed;
   top: 0;
@@ -114,6 +126,7 @@ body {
 }
 
 .cyber-grid-overlay {
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -143,8 +156,8 @@ body {
   position: absolute;
   border-radius: 50%;
   filter: blur(120px);
-  opacity: 0.25;
-  animation: floatNebula 18s ease-in-out infinite alternate;
+  opacity: 0;
+  animation: none;
 }
 
 .nebula-1 {
@@ -182,6 +195,7 @@ body {
 }
 
 .scanline {
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -257,24 +271,22 @@ body {
    ========================================================================== */
 
 .navbar {
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 100;
-  padding: 16px 0;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  background: rgba(5, 7, 15, 0.75);
-  border-bottom: 1px solid var(--border-subtle);
+  padding: 20px 0;
+  background: transparent;
+  border: none;
   transition: all 0.3s ease;
 }
 
 .navbar.scrolled {
   padding: 12px 0;
-  background: rgba(5, 7, 15, 0.92);
-  border-bottom-color: rgba(0, 240, 255, 0.2);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 240, 255, 0.08);
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
 
 .nav-container {
@@ -1859,3 +1871,283 @@ body {
 }
 
 
+
+/* Video Background for Hero Section */
+.hero-video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* =====================================================
+   Contact Section
+   ===================================================== */
+.contact-section {
+  padding: 100px 0;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.contact-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--cyan-core);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 240, 255, 0.1);
+}
+
+.contact-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyan-core), transparent);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.contact-card:hover::before {
+  transform: scaleX(1);
+}
+
+.contact-icon-wrapper {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(0, 240, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.contact-icon {
+  width: 28px;
+  height: 28px;
+  color: var(--text-pure);
+  transition: all 0.3s ease;
+}
+
+.contact-card:hover .contact-icon-wrapper {
+  background: rgba(0, 240, 255, 0.15);
+  box-shadow: 0 0 20px var(--cyan-glow);
+}
+
+.contact-card:hover .contact-icon {
+  color: var(--cyan-core);
+}
+
+.contact-info h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-pure);
+  margin-bottom: 8px;
+  font-family: var(--font-display);
+}
+
+.contact-info p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+/* Custom Scrollbar for Gallery Track */
+.custom-scrollbar {
+  overflow-x: auto;
+  overflow-y: hidden;
+  /* scroll-behavior: smooth; (disabled to allow instant 1:1 mapping with wheel scroll) */
+}
+
+/* Hide scrollbar for a cleaner look */
+.custom-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.custom-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* =====================================================
+   Hero Date & Venue
+   ===================================================== */
+.hero-date-venue {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+  padding: 12px 32px;
+  background: rgba(10, 16, 32, 0.6);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.15);
+  animation: pulse-glow 3s infinite alternate;
+}
+
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 15px rgba(0, 240, 255, 0.1); border-color: rgba(0, 240, 255, 0.2); }
+  100% { box-shadow: 0 0 25px rgba(0, 240, 255, 0.3); border-color: rgba(0, 240, 255, 0.5); }
+}
+
+.hero-date, .hero-venue {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 1px;
+}
+
+.hero-date-venue i, .hero-date-venue svg {
+  width: 20px;
+  height: 20px;
+  color: var(--cyan-core);
+}
+
+.hero-divider {
+  color: var(--cyan-core);
+  font-size: 1.5rem;
+  opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+  .hero-date-venue {
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px 24px;
+    border-radius: 20px;
+  }
+  .hero-divider {
+    display: none;
+  }
+}
+
+/* =====================================================
+   Sponsors Section
+   ===================================================== */
+.sponsors-section {
+  padding: 100px 0;
+  min-height: 50vh;
+}
+
+.sponsors-tier {
+  margin-top: 60px;
+  text-align: center;
+}
+
+.tier-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  color: var(--text-secondary);
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+.title-sponsor-glow {
+  color: var(--cyan-core);
+  text-shadow: 0 0 10px var(--cyan-glow);
+}
+
+.gold-sponsor-glow {
+  color: var(--amber-core);
+  text-shadow: 0 0 10px var(--amber-glow);
+}
+
+.sponsors-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+}
+
+.sponsor-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 40px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: var(--text-pure);
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.sponsor-card:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-5px);
+}
+
+.tier-1 .sponsor-card {
+  font-size: 2.2rem;
+  padding: 40px 60px;
+  border-color: var(--cyan-glow);
+}
+
+.tier-1 .sponsor-card:hover {
+  border-color: var(--cyan-core);
+  box-shadow: 0 10px 30px rgba(0, 240, 255, 0.2);
+}
+
+.tier-2 .sponsor-card {
+  font-size: 1.8rem;
+  padding: 30px 50px;
+  border-color: var(--amber-glow);
+}
+
+.tier-2 .sponsor-card:hover {
+  border-color: var(--amber-core);
+  box-shadow: 0 10px 30px rgba(255, 184, 0, 0.2);
+}
+
+/* =====================================================
+   Hero Title Sponsor Label
+   ===================================================== */
+.hero-title-sponsor-label {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--cyan-core);
+  text-transform: uppercase;
+  margin-bottom: -15px;
+  text-shadow: 0 0 10px var(--cyan-glow);
+  z-index: 10;
+  position: relative;
+}

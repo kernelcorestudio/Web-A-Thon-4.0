@@ -1,9 +1,11 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Cpu, Ticket } from 'lucide-react';
+import Image from 'next/image';
+import { Ticket, Menu, X } from 'lucide-react';
 import { soundFX } from '@/lib/audio';
 import { ContinuousTabs } from './ContinuousTabs';
+import clubLogo from './assests/logo.png';
 
 interface NavbarProps {
   onOpenRegister: () => void;
@@ -12,6 +14,7 @@ interface NavbarProps {
 export default function Navbar({ onOpenRegister }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [audioEnabled, setAudioEnabled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     setAudioEnabled(soundFX.isEnabled());
@@ -36,6 +39,7 @@ export default function Navbar({ onOpenRegister }: NavbarProps) {
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
+    setIsMobileMenuOpen(false); // Close mobile menu on click
     const el = document.querySelector(targetId);
     if (el) {
       el.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -49,42 +53,25 @@ export default function Navbar({ onOpenRegister }: NavbarProps) {
         {/* Left: Logo Placeholder */}
         <div className="nav-left" style={{ flex: 1, display: 'flex', justifyContent: 'flex-start' }}>
           <a href="#" className="brand-group" onClick={(e) => handleNavClick(e, '#about')}>
-            <div className="brand-symbol" style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px dashed rgba(255,255,255,0.3)' }}>
-              {/* Placeholder for Club Logo */}
-              <Cpu className="w-5 h-5 text-gray-400" />
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Image src={clubLogo} alt="TECH GEEKS" width={65} height={65} style={{ objectFit: 'contain' }} />
             </div>
             <div className="brand-text">
               <div className="brand-title">
-                CLUB LOGO
+                TECH GEEKS
               </div>
             </div>
           </a>
         </div>
 
-        {/* Center: Continuous Tabs */}
-        <div className="nav-center" style={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
+        {/* Center: Continuous Tabs (Desktop) */}
+        <div className="nav-center desktop-only" style={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
           <ContinuousTabs />
         </div>
 
-        {/* Right: Actions */}
-        <div className="nav-right" style={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
+        {/* Right: Actions (Desktop) */}
+        <div className="nav-right desktop-only" style={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
           <div className="nav-actions">
-            {/* Audio SFX Switcher */}
-            <button
-              id="audio-toggle-btn"
-              className={`audio-toggle-btn ${audioEnabled ? 'sound-on' : ''}`}
-              onClick={handleAudioToggle}
-              title="Toggle Futuristic Audio Feedback"
-            >
-              <span className="sound-bars">
-                <span className="sound-bar"></span>
-                <span className="sound-bar"></span>
-                <span className="sound-bar"></span>
-              </span>
-              <span id="audio-status-text">{audioEnabled ? 'SFX ON' : 'SFX OFF'}</span>
-            </button>
-
-            {/* Register Pass Button */}
             <button className="nav-cta-btn open-register-btn" onClick={onOpenRegister}>
               <Ticket className="w-4 h-4" />
               <span>REGISTER</span>
@@ -92,7 +79,31 @@ export default function Navbar({ onOpenRegister }: NavbarProps) {
           </div>
         </div>
 
+        {/* Mobile Menu Toggle */}
+        <div className="mobile-toggle-btn" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+          {isMobileMenuOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
+        </div>
       </div>
+
+      {/* Mobile Menu Dropdown */}
+      {isMobileMenuOpen && (
+        <div className="mobile-menu-dropdown">
+          <a href="#about" className="mobile-menu-link" onClick={(e) => handleNavClick(e, '#about')}>Home</a>
+          <a href="#about-fest" className="mobile-menu-link" onClick={(e) => handleNavClick(e, '#about-fest')}>About</a>
+          <a href="#events" className="mobile-menu-link" onClick={(e) => handleNavClick(e, '#events')}>Events</a>
+          <a href="#schedule" className="mobile-menu-link" onClick={(e) => handleNavClick(e, '#schedule')}>Schedule</a>
+          <a href="#gallery" className="mobile-menu-link" onClick={(e) => handleNavClick(e, '#gallery')}>Gallery</a>
+          <a href="#sponsors" className="mobile-menu-link" onClick={(e) => handleNavClick(e, '#sponsors')}>Sponsors</a>
+          <a href="#contact" className="mobile-menu-link" onClick={(e) => handleNavClick(e, '#contact')}>Contact</a>
+          
+          <button className="btn-primary" style={{ marginTop: '1rem', width: '100%', justifyContent: 'center' }} onClick={() => {
+            setIsMobileMenuOpen(false);
+            onOpenRegister();
+          }}>
+            REGISTER NOW
+          </button>
+        </div>
+      )}
     </header>
   );
 }
