@@ -2606,5 +2606,518 @@ body {
     transform: none;
     transition: none;
   }
+  .event-carousel-group {
+    animation: none !important;
+  }
 }
+
+/* ==========================================================================
+   Event Arena CSS-Only Infinite Scrolling Carousel
+   ========================================================================== */
+
+.event-carousel-wrapper {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow: hidden;
+  padding: 2rem 0 3rem 0;
+  /* Cinematic edge gradient masks for seamless fade on sides */
+  mask-image: linear-gradient(to right, transparent, rgba(0,0,0,1) 8%, rgba(0,0,0,1) 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, rgba(0,0,0,1) 8%, rgba(0,0,0,1) 92%, transparent);
+}
+
+.event-carousel-track {
+  display: flex;
+  width: max-content;
+}
+
+.event-carousel-group {
+  display: flex;
+  gap: 2rem;
+  padding-right: 2rem;
+  will-change: transform;
+  animation: eventInfiniteScroll 30s linear infinite;
+}
+
+/* Pause on hover: Pauses both duplicated groups seamlessly */
+.event-carousel-wrapper:hover .event-carousel-group {
+  animation-play-state: paused !important;
+}
+
+@keyframes eventInfiniteScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Poster Card Styling */
+.event-poster-card {
+  width: 320px;
+  min-width: 320px;
+  background: rgba(10, 16, 32, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 240, 255, 0.15);
+  border-radius: 20px;
+  padding: 1.25rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.event-poster-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00f0ff, #8b5cf6, transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.event-poster-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(0, 240, 255, 0.5);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8),
+              0 0 30px rgba(0, 240, 255, 0.2),
+              inset 0 0 20px rgba(0, 240, 255, 0.05);
+}
+
+.event-poster-card:hover::before {
+  opacity: 1;
+}
+
+.event-poster-img-container {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.event-poster-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.event-poster-card:hover .event-poster-img {
+  transform: scale(1.06);
+}
+
+.event-poster-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 30px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+  z-index: 2;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+.event-prize-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 30px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  background: rgba(0, 0, 0, 0.8);
+  color: #ffb800;
+  border: 1px solid rgba(255, 184, 0, 0.4);
+  backdrop-filter: blur(8px);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+.event-card-body {
+  padding: 1.2rem 0.25rem 0.25rem 0.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.event-card-title {
+  font-family: var(--font-cyber, 'Orbitron', sans-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+.event-poster-card:hover .event-card-title {
+  color: #00f0ff;
+  text-shadow: 0 0 12px rgba(0, 240, 255, 0.4);
+}
+
+.event-card-desc {
+  font-size: 0.875rem;
+  color: #94a3b8;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.event-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.event-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: #64748b;
+  font-family: var(--font-mono, monospace);
+}
+
+.event-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #00f0ff;
+  font-size: 0.875rem;
+  font-weight: 700;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.event-poster-card:hover .event-cta-btn {
+  color: #ffffff;
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   Events Gallery CSS-Only Infinite Scrolling Carousel
+   ========================================================================== */
+
+.gallery-carousel-section {
+  padding: 6rem 0 4rem 0;
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.gallery-carousel-wrapper {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow: hidden;
+  padding: 1.5rem 0 3rem 0;
+  /* Cinematic edge gradient masks */
+  mask-image: linear-gradient(to right, transparent, rgba(0,0,0,1) 8%, rgba(0,0,0,1) 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, rgba(0,0,0,1) 8%, rgba(0,0,0,1) 92%, transparent);
+}
+
+.gallery-carousel-track {
+  display: flex;
+  width: max-content;
+}
+
+.gallery-carousel-group {
+  display: flex;
+  gap: 1.5rem;
+  padding-right: 1.5rem;
+  will-change: transform;
+  animation: galleryInfiniteScroll 35s linear infinite;
+}
+
+.gallery-carousel-group.reverse {
+  animation: galleryInfiniteScrollReverse 38s linear infinite;
+}
+
+/* Pause on hover: seamlessly halts both duplicate groups */
+.gallery-carousel-wrapper:hover .gallery-carousel-group {
+  animation-play-state: paused !important;
+}
+
+@keyframes galleryInfiniteScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes galleryInfiniteScrollReverse {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Gallery Photo Card */
+.gallery-photo-card {
+  width: 360px;
+  min-width: 360px;
+  height: 250px;
+  background: rgba(10, 16, 32, 0.7);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(0, 240, 255, 0.15);
+  border-radius: 18px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gallery-photo-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  border-color: rgba(0, 240, 255, 0.5);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8),
+              0 0 25px rgba(0, 240, 255, 0.25);
+}
+
+.gallery-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gallery-photo-card:hover .gallery-photo-img {
+  transform: scale(1.08);
+}
+
+.gallery-photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(3, 7, 18, 0.9) 0%, rgba(3, 7, 18, 0.3) 50%, transparent 100%);
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.25rem;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-photo-card:hover .gallery-photo-overlay {
+  opacity: 1;
+}
+
+.gallery-photo-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #00f0ff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.gallery-photo-desc {
+  color: #e2e8f0;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+/* ==========================================================================
+   Mobile & Tablet Responsiveness for Event & Gallery Carousels
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Section Spacing & Responsive Typography */
+  .event-arena-section,
+  .gallery-carousel-section {
+    padding: 3.5rem 0 2rem 0 !important;
+  }
+
+  .event-arena-title,
+  .gallery-title {
+    font-size: clamp(2rem, 8vw, 2.75rem) !important;
+  }
+
+  .event-arena-subtitle,
+  .gallery-subtitle {
+    font-size: 0.95rem !important;
+    padding: 0 1rem;
+  }
+
+  .event-hud-notice {
+    font-size: 0.72rem !important;
+    padding: 0.35rem 0.85rem !important;
+    margin-top: 1rem !important;
+  }
+
+  /* Event Carousel & Cards on Mobile */
+  .event-carousel-wrapper {
+    padding: 1.25rem 0 2rem 0 !important;
+  }
+
+  .event-carousel-group {
+    gap: 1rem !important;
+    padding-right: 1rem !important;
+    animation-duration: 22s !important;
+  }
+
+  .event-poster-card {
+    width: 260px !important;
+    min-width: 260px !important;
+    padding: 0.9rem !important;
+    border-radius: 16px !important;
+  }
+
+  .event-poster-img-container {
+    height: 300px !important;
+    border-radius: 12px !important;
+  }
+
+  .event-card-title {
+    font-size: 1.15rem !important;
+  }
+
+  .event-card-desc {
+    font-size: 0.8rem !important;
+    line-height: 1.4 !important;
+  }
+
+  .event-poster-badge,
+  .event-prize-badge {
+    padding: 0.25rem 0.65rem !important;
+    font-size: 0.68rem !important;
+    top: 0.75rem !important;
+  }
+
+  .event-poster-badge {
+    left: 0.75rem !important;
+  }
+
+  .event-prize-badge {
+    right: 0.75rem !important;
+  }
+
+  /* Gallery Carousel & Cards on Mobile */
+  .gallery-carousel-wrapper {
+    padding: 0.75rem 0 1.5rem 0 !important;
+  }
+
+  .gallery-carousel-group {
+    gap: 0.85rem !important;
+    padding-right: 0.85rem !important;
+    animation-duration: 25s !important;
+  }
+
+  .gallery-photo-card {
+    width: 240px !important;
+    min-width: 240px !important;
+    height: 170px !important;
+    border-radius: 14px !important;
+  }
+
+  .gallery-photo-tag {
+    font-size: 0.7rem !important;
+  }
+
+  .gallery-photo-desc {
+    font-size: 0.75rem !important;
+  }
+
+  .gallery-photo-overlay {
+    padding: 0.85rem !important;
+    opacity: 1 !important; /* Always visible on mobile touch */
+    background: linear-gradient(to top, rgba(3, 7, 18, 0.92) 0%, rgba(3, 7, 18, 0.4) 60%, transparent 100%) !important;
+  }
+
+  /* Modals on Mobile */
+  .event-modal-container {
+    flex-direction: column !important;
+    max-height: 94vh !important;
+    border-radius: 18px !important;
+    margin: 0.5rem !important;
+  }
+
+  .event-modal-poster-side {
+    flex: 0 0 auto !important;
+    min-height: 200px !important;
+    max-height: 220px !important;
+    padding: 1rem !important;
+  }
+
+  .event-modal-poster-side img {
+    max-height: 200px !important;
+  }
+
+  .event-modal-content-side {
+    padding: 1.25rem !important;
+  }
+
+  .event-modal-content-side h2 {
+    font-size: 1.75rem !important;
+  }
+
+  .event-modal-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.85rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .event-poster-card {
+    width: 230px !important;
+    min-width: 230px !important;
+  }
+
+  .event-poster-img-container {
+    height: 270px !important;
+  }
+
+  .gallery-photo-card {
+    width: 200px !important;
+    min-width: 200px !important;
+    height: 145px !important;
+  }
+
+  .event-modal-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+
+
 

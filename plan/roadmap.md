@@ -1,27 +1,40 @@
-# NIRVAN '26 — Project Roadmap & Release Milestones
+# NIRVAN '26 — Project Roadmap & Milestones
 
-## Phase 1: Core Hero Page & Visuals (Completed)
-- [x] High-octane Cyberpunk / Dark Horizon aesthetic (`#05070f`, neon cyan, ultraviolet, amber).
-- [x] Three.js interactive 3D WebGL Hologram Core & particle starfield.
-- [x] Glitch & scramble decode typography for event title and tagline.
-- [x] Responsive layout with glassmorphic cards and dynamic HUD brackets.
-- [x] Custom interactive cursor follower with hover magnetism.
+This document tracks completed phases and upcoming milestones for the NIRVAN '26 project.
 
-## Phase 2: Interactivity & Media (Completed)
-- [x] Real-time live countdown timer (Days, Hours, Minutes, Seconds).
-- [x] Web Audio API procedural sound synthesizer with HUD equalizer.
-- [x] Campus showcase teaser video player modal with custom cyber frame.
-- [x] Interactive Fest CLI Terminal with command parser.
-- [x] Instant Holographic Hacker Pass Generator with ticket download & confetti.
+---
 
-## Phase 3: Next.js App Router Migration (Completed)
-- [x] Migrated architecture to Next.js App Router with React & TypeScript.
-- [x] Integrated `Drone.mp4` aerial showcase video into preview spotlight and cinema modal.
-- [x] Modularized components (`ThreeScene`, `Navbar`, `Hero`, `HighlightsMarquee`, `Tracks`, `CampusSpotlight`, `Terminal`, `VideoModal`, `RegisterModal`, `CustomCursor`, `Footer`).
-- [x] Ensured SSR safety for Three.js canvas and Web Audio context.
+## 🏁 Phase 1: Core System Architecture & Setup `[COMPLETED]`
+- [x] Initialized Next.js App Router with TypeScript configuration.
+- [x] Configured Google Fonts (`Orbitron`, `Fira Code`, `Inter`) in root layout.
+- [x] Implemented centralized glassmorphic design token system in `app/globals.css`.
+- [x] Engineered procedural Web Audio API synthesizer in `lib/audio.ts`.
 
-## Phase 4: Expansion & Future Modules (Planned)
-- [ ] **Live Leaderboard & Submissions Portal**: Connect backend for live team submission tracking and GitHub integration.
-- [ ] **Interactive Campus 3D Map**: Interactive 3D spatial map of GEHU Campus event halls and hackathon arenas.
-- [ ] **Discord / Telegram Bot Integration**: Live alerts for keynote announcements, workshop timings, and track bounty releases.
-- [ ] **Sponsor & Partner Holographic Wall**: 3D interactive sponsor logos with holographic inspection cards.
+---
+
+## 🚀 Phase 2: Interactive Modules & Visual Assets `[COMPLETED]`
+- [x] Built Three.js WebGL Holographic Quantum Core with particle matrix and mouse physics.
+- [x] Integrated real-time synchronized Countdown timer with scramble text effects.
+- [x] Implemented comprehensive **Event Arena** with filterable tabs and official event posters (Hackathon, CTF, Esports, Treasure Hunt, Workshops).
+- [x] Designed **Day 1 & Day 2 Fest Schedule** with interactive timeline stages.
+- [x] Built **Speakers & Mentors Showcase** with bio details and social badges.
+- [x] Created **Fest Photo Gallery** showcasing high-resolution past event captures.
+- [x] Built **About & Vision Section** with animated stats and core pillars.
+- [x] Integrated **Black Hole Video Separator** (`public/black_hole.mp4`) and hero video backdrop.
+- [x] Added **Ambient Audio Player** with continuous soundtrack playback.
+
+---
+
+## 🎫 Phase 3: Registration & Attendee Badge System `[COMPLETED]`
+- [x] Developed comprehensive **Registration Modal** supporting both Solo and Team registrations.
+- [x] Implemented form validation for emails, phone numbers, and member lists.
+- [x] Built instant **Holographic Hacker Pass Generator** with custom badge IDs and QR codes.
+- [x] Added multi-color celebratory confetti animations (`canvas-confetti`).
+
+---
+
+## 🔮 Phase 4: Future Enhancements `[PLANNED]`
+- [ ] Backend integration with Supabase / PostgreSQL for live database ticket persistence.
+- [ ] Automated email confirmation with embedded SVG tickets.
+- [ ] Live Leaderboard & CTF Scoreboard integration.
+- [ ] Interactive 3D Campus Map viewer.
