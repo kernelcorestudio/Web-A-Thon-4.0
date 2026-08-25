@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Cpu, Ticket } from 'lucide-react';
 import { soundFX } from '@/lib/audio';
+import { ContinuousTabs } from './ContinuousTabs';
 
 interface NavbarProps {
   onOpenRegister: () => void;
@@ -43,64 +44,54 @@ export default function Navbar({ onOpenRegister }: NavbarProps) {
 
   return (
     <header className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
-      <div className="container nav-container">
-        <a href="#" className="brand-group" onClick={(e) => handleNavClick(e, '#about')}>
-          <div className="brand-symbol">
-            <Cpu className="w-5 h-5" />
-          </div>
-          <div className="brand-text">
-            <div className="brand-title">
-              NIRVAN <span className="accent-year">&apos;26</span>
+      <div className="container nav-container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        
+        {/* Left: Logo Placeholder */}
+        <div className="nav-left" style={{ flex: 1, display: 'flex', justifyContent: 'flex-start' }}>
+          <a href="#" className="brand-group" onClick={(e) => handleNavClick(e, '#about')}>
+            <div className="brand-symbol" style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px dashed rgba(255,255,255,0.3)' }}>
+              {/* Placeholder for Club Logo */}
+              <Cpu className="w-5 h-5 text-gray-400" />
             </div>
-            <div className="brand-badge">
-              <span className="campus-pill">GEHU CAMPUS</span>
-              <span>TECH FEST</span>
+            <div className="brand-text">
+              <div className="brand-title">
+                CLUB LOGO
+              </div>
             </div>
-          </div>
-        </a>
-
-        <nav>
-          <ul className="nav-links">
-            <li className="nav-item">
-              <a href="#about" onClick={(e) => handleNavClick(e, '#about')}>About</a>
-            </li>
-            <li className="nav-item">
-              <a href="#tracks" onClick={(e) => handleNavClick(e, '#tracks')}>Tracks</a>
-            </li>
-            <li className="nav-item">
-              <a href="#highlights" onClick={(e) => handleNavClick(e, '#highlights')}>Highlights</a>
-            </li>
-            <li className="nav-item">
-              <a href="#campus-video" onClick={(e) => handleNavClick(e, '#campus-video')}>Campus Spotlight</a>
-            </li>
-            <li className="nav-item">
-              <a href="#terminal" onClick={(e) => handleNavClick(e, '#terminal')}>Terminal</a>
-            </li>
-          </ul>
-        </nav>
-
-        <div className="nav-actions">
-          {/* Audio SFX Switcher */}
-          <button
-            id="audio-toggle-btn"
-            className={`audio-toggle-btn ${audioEnabled ? 'sound-on' : ''}`}
-            onClick={handleAudioToggle}
-            title="Toggle Futuristic Audio Feedback"
-          >
-            <span className="sound-bars">
-              <span className="sound-bar"></span>
-              <span className="sound-bar"></span>
-              <span className="sound-bar"></span>
-            </span>
-            <span id="audio-status-text">{audioEnabled ? 'SFX ON' : 'SFX OFF'}</span>
-          </button>
-
-          {/* Register Pass Button */}
-          <button className="nav-cta-btn open-register-btn" onClick={onOpenRegister}>
-            <Ticket className="w-4 h-4" />
-            <span>GET PASS</span>
-          </button>
+          </a>
         </div>
+
+        {/* Center: Continuous Tabs */}
+        <div className="nav-center" style={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
+          <ContinuousTabs />
+        </div>
+
+        {/* Right: Actions */}
+        <div className="nav-right" style={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
+          <div className="nav-actions">
+            {/* Audio SFX Switcher */}
+            <button
+              id="audio-toggle-btn"
+              className={`audio-toggle-btn ${audioEnabled ? 'sound-on' : ''}`}
+              onClick={handleAudioToggle}
+              title="Toggle Futuristic Audio Feedback"
+            >
+              <span className="sound-bars">
+                <span className="sound-bar"></span>
+                <span className="sound-bar"></span>
+                <span className="sound-bar"></span>
+              </span>
+              <span id="audio-status-text">{audioEnabled ? 'SFX ON' : 'SFX OFF'}</span>
+            </button>
+
+            {/* Register Pass Button */}
+            <button className="nav-cta-btn open-register-btn" onClick={onOpenRegister}>
+              <Ticket className="w-4 h-4" />
+              <span>REGISTER</span>
+            </button>
+          </div>
+        </div>
+
       </div>
     </header>
   );

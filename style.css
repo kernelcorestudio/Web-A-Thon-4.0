@@ -1824,3 +1824,38 @@ body {
     text-align: center;
   }
 }
+
+/* Hero image — top & bottom fade to black for seamless blend */
+.hero-section--centered {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section--centered::before,
+.hero-section--centered::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 220px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero-section--centered::before {
+  top: 0;
+  background: linear-gradient(to bottom, #000000 0%, transparent 100%);
+}
+
+.hero-section--centered::after {
+  bottom: 0;
+  background: linear-gradient(to top, #000000 0%, transparent 100%);
+}
+
+/* Ensure hero content sits above the fade overlays */
+.hero-section--centered .container {
+  position: relative;
+  z-index: 3;
+}
+
+
