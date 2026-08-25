@@ -26,38 +26,12 @@ document.addEventListener('DOMContentLoaded', () => {
    1. Custom Cursor Follower
    ========================================================================== */
 function initCustomCursor() {
-  const dot = document.querySelector('.cursor-dot');
-  const ring = document.querySelector('.cursor-ring');
-  if (!dot || !ring) return;
-
-  let mouseX = window.innerWidth / 2;
-  let mouseY = window.innerHeight / 2;
-  let ringX = mouseX;
-  let ringY = mouseY;
-
-  window.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    dot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
-  });
-
-  function renderCursor() {
-    ringX += (mouseX - ringX) * 0.18;
-    ringY += (mouseY - ringY) * 0.18;
-    ring.style.transform = `translate(${ringX}px, ${ringY}px)`;
-    requestAnimationFrame(renderCursor);
-  }
-  renderCursor();
-
-  // Hover state on interactive elements
+  // Cursor animation removed as requested. 
+  // Retaining interaction sound effects on hoverables.
   const hoverables = document.querySelectorAll('button, a, input, select, .track-card, .campus-spotlight-card, .video-player-preview');
   hoverables.forEach((el) => {
     el.addEventListener('mouseenter', () => {
-      ring.classList.add('active');
       if (window.soundFX) window.soundFX.playHover();
-    });
-    el.addEventListener('mouseleave', () => {
-      ring.classList.remove('active');
     });
     el.addEventListener('click', () => {
       if (window.soundFX) window.soundFX.playClick();

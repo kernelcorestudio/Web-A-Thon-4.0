@@ -4,12 +4,7 @@ import React, { useState } from 'react';
 import dynamic from 'next/dynamic';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
-import HighlightsMarquee from '@/components/HighlightsMarquee';
-import Tracks from '@/components/Tracks';
-import CampusSpotlight from '@/components/CampusSpotlight';
-import Terminal from '@/components/Terminal';
 import Footer from '@/components/Footer';
-import VideoModal from '@/components/VideoModal';
 import RegisterModal from '@/components/RegisterModal';
 import CustomCursor from '@/components/CustomCursor';
 
@@ -17,7 +12,6 @@ import CustomCursor from '@/components/CustomCursor';
 const ThreeScene = dynamic(() => import('@/components/ThreeScene'), { ssr: false });
 
 export default function Home() {
-  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
 
   return (
@@ -40,27 +34,50 @@ export default function Home() {
         <Navbar onOpenRegister={() => setIsRegisterModalOpen(true)} />
         
         <main>
+          {/* Home Section */}
           <Hero
             onOpenRegister={() => setIsRegisterModalOpen(true)}
-            onOpenVideo={() => setIsVideoModalOpen(true)}
+            onOpenVideo={() => {}}
           />
-          <HighlightsMarquee />
-          <Tracks />
-          <CampusSpotlight onOpenVideo={() => setIsVideoModalOpen(true)} />
-          <Terminal
-            onOpenRegister={() => setIsRegisterModalOpen(true)}
-            onOpenVideo={() => setIsVideoModalOpen(true)}
-          />
+
+          {/* Events Section */}
+          <section id="events" className="placeholder-section">
+            <div className="container">
+              <div className="section-header">
+                <span className="section-tag">COMING SOON</span>
+                <h2 className="section-title">Events</h2>
+                <p className="section-subtitle">Stay tuned — event lineup dropping soon.</p>
+              </div>
+            </div>
+          </section>
+
+          {/* Gallery Section */}
+          <section id="gallery" className="placeholder-section">
+            <div className="container">
+              <div className="section-header">
+                <span className="section-tag">COMING SOON</span>
+                <h2 className="section-title">Gallery</h2>
+                <p className="section-subtitle">Highlights and memories from past editions.</p>
+              </div>
+            </div>
+          </section>
+
+          {/* Contact Section */}
+          <section id="contact" className="placeholder-section">
+            <div className="container">
+              <div className="section-header">
+                <span className="section-tag">GET IN TOUCH</span>
+                <h2 className="section-title">Contact Us</h2>
+                <p className="section-subtitle">Have questions? Reach out to the NIRVAN '26 team.</p>
+              </div>
+            </div>
+          </section>
         </main>
 
         <Footer />
       </div>
 
       {/* Modals */}
-      <VideoModal
-        isOpen={isVideoModalOpen}
-        onClose={() => setIsVideoModalOpen(false)}
-      />
       <RegisterModal
         isOpen={isRegisterModalOpen}
         onClose={() => setIsRegisterModalOpen(false)}
