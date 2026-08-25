@@ -94,6 +94,7 @@ export default function Navbar({ onOpenRegister }: NavbarProps) {
           <a href="#schedule" className="mobile-menu-link" onClick={(e) => handleNavClick(e, '#schedule')}>Schedule</a>
           <a href="#gallery" className="mobile-menu-link" onClick={(e) => handleNavClick(e, '#gallery')}>Gallery</a>
           <a href="#sponsors" className="mobile-menu-link" onClick={(e) => handleNavClick(e, '#sponsors')}>Sponsors</a>
+          <a href="#faq" className="mobile-menu-link" onClick={(e) => handleNavClick(e, '#faq')}>FAQ</a>
           <a href="#contact" className="mobile-menu-link" onClick={(e) => handleNavClick(e, '#contact')}>Contact</a>
           
           <button className="btn-primary" style={{ marginTop: '1rem', width: '100%', justifyContent: 'center' }} onClick={() => {

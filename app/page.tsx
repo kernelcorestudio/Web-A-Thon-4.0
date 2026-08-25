@@ -9,6 +9,7 @@ import RegisterModal from '@/components/RegisterModal';
 import CustomCursor from '@/components/CustomCursor';
 import { EventsGallery } from '@/components/EventsGallery';
 import { Sponsors } from '@/components/Sponsors';
+import { FAQSection } from '@/components/FAQSection';
 import { ContactSection } from '@/components/ContactSection';
 import { AboutSection } from '@/components/AboutSection';
 import { EventArena } from '@/components/EventArena';
@@ -83,6 +84,11 @@ export default function Home() {
           {/* Sponsors Section */}
           <ScrollReveal direction="right" delay={150}>
             <Sponsors />
+          </ScrollReveal>
+
+          {/* FAQ Section */}
+          <ScrollReveal direction="up" delay={150}>
+            <FAQSection />
           </ScrollReveal>
 
           {/* Contact Section */}

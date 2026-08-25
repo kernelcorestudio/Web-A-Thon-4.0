@@ -23,6 +23,7 @@ const DEFAULT_TABS: TabItem[] = [
     { id: "schedule", label: "Schedule" },
     { id: "gallery", label: "Gallery" },
     { id: "sponsors", label: "Sponsors" },
+    { id: "faq", label: "FAQ" },
     { id: "contact", label: "Contact" },
 ];
 
