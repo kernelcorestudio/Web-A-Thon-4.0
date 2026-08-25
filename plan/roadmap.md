@@ -14,7 +14,13 @@
 - [x] Interactive Fest CLI Terminal with command parser.
 - [x] Instant Holographic Hacker Pass Generator with ticket download & confetti.
 
-## Phase 3: Expansion & Future Modules (Planned)
+## Phase 3: Next.js App Router Migration (Completed)
+- [x] Migrated architecture to Next.js App Router with React & TypeScript.
+- [x] Integrated `Drone.mp4` aerial showcase video into preview spotlight and cinema modal.
+- [x] Modularized components (`ThreeScene`, `Navbar`, `Hero`, `HighlightsMarquee`, `Tracks`, `CampusSpotlight`, `Terminal`, `VideoModal`, `RegisterModal`, `CustomCursor`, `Footer`).
+- [x] Ensured SSR safety for Three.js canvas and Web Audio context.
+
+## Phase 4: Expansion & Future Modules (Planned)
 - [ ] **Live Leaderboard & Submissions Portal**: Connect backend for live team submission tracking and GitHub integration.
 - [ ] **Interactive Campus 3D Map**: Interactive 3D spatial map of GEHU Campus event halls and hackathon arenas.
 - [ ] **Discord / Telegram Bot Integration**: Live alerts for keynote announcements, workshop timings, and track bounty releases.

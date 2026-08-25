@@ -1,34 +1,36 @@
 # NIRVAN '26 — Setup, Development & Usage Guide
 
-## Quick Start (Running Locally)
+## Quick Start (Running with Next.js)
 
-### Option 1: Python HTTP Server (Recommended)
+### 1. Install Dependencies
 ```bash
-# In the project root directory:
-python -m http.server 3000
+npm install
 ```
-Then open your browser and navigate to:
+
+### 2. Start Next.js Development Server
+```bash
+npm run dev
+```
+Navigate to:
 ```
 http://localhost:3000
 ```
 
-### Option 2: Node.js (Serve or Live-Server)
+### 3. Production Build & Start
 ```bash
-npx -y serve -l 3000
+npm run build
+npm start
 ```
-
-### Option 3: VS Code Live Server
-Right-click `index.html` and select **"Open with Live Server"**.
 
 ---
 
 ## User Interaction Guide
 
-| Action | Shortcut / Trigger | Description |
+| Action | Component / Trigger | Description |
 | :--- | :--- | :--- |
-| **Holographic Hacker Pass** | Click **"REGISTER NOW"** or **"GET PASS"** | Opens attendee form & generates personalized digital pass |
-| **Campus Video Trailer** | Click **"WATCH TEASER"** / Campus Card | Opens embedded GEHU fest video player in Cyber Cinema view |
-| **Audio SFX Toggle** | Click **"SFX OFF / ON"** in Navbar | Enables/mutes procedural sci-fi audio synthesizer |
-| **Terminal CLI** | Type command & press `Enter` | Executes interactive commands (`help`, `tracks`, `gehu`, etc.) |
-| **3D Parallax Tilt** | Hover over track cards or move mouse | Real-time 3D card tilt and holographic reflection |
-| **3D Pulse Shockwave** | Click anywhere on the background | Sends acceleration pulse to 3D Quantum Core |
+| **Holographic Hacker Pass** | Click **"REGISTER NOW"** or **"GET PASS"** | Opens attendee form & generates personalized digital pass with celebratory confetti |
+| **Campus Drone Video Showcase** | Click **"WATCH TEASER"** / Spotlight Card | Opens embedded `Drone.mp4` video player in Cyber Cinema modal view |
+| **Audio SFX Synthesizer** | Click **"SFX OFF / ON"** in Navbar | Enables/mutes native Web Audio procedural synthesizer |
+| **Terminal CLI Console** | Type command & press `Enter` | Executes interactive commands (`help`, `tracks`, `gehu`, `prizes`, `register`, `video`, `matrix`, `easteregg`) |
+| **3D Parallax Card Tilt** | Hover over track cards or move mouse | Real-time 3D card tilt physics and holographic reflection |
+| **3D Core Shockwave Pulse** | Click anywhere on the background canvas | Sends acceleration pulse to the Three.js 3D Quantum Core |
